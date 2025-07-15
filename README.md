@@ -41,9 +41,9 @@ Used to detect **network quality** and optimize tracking behavior for users on s
 2. Token and username are passed as props instead of using `localStorage`.
 3. Courses are listed. Each course links to a `CourseDetail` page.
 4. On lesson view:
-   - Visibility is tracked using Intersection Observer API.
-   - Check the Network Strength (Good Network, Bad Network) with Network Information API
-   - Time is tracked using setInterval by using Background Task API.
+   - Visibility is tracked using `Intersection Observer API`.
+   - Check the Network Strength (Good Network, Bad Network) with `Network Information API`.
+   - Time is tracked using setInterval by using `Background Task API`.
    - Every 10s, progress is saved to backend.
    - Once enough time is spent, the lesson is marked complete.
 5. Navbar displays username and logout button.
@@ -53,8 +53,8 @@ Used to detect **network quality** and optimize tracking behavior for users on s
 ## 💻 How to Run Frontend Locally
 
 # Step 1: Clone the repository
-git clone https://github.com/yourusername/edutracker.git
-cd edutracker
+git clone https://github.com/daniel08424/eduTracker_Frontend.git
+cd eduTracker_Frontend
 
 # Step 2: Install dependencies
 npm install
