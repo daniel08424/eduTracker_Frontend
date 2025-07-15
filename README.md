@@ -4,6 +4,10 @@ EduTracker is a e-learning platform designed to intelligently monitor user activ
 
 ---
 
+🌐 **Live App**: [https://edutracker-288fbd.netlify.app](https://edutracker-288fbd.netlify.app)
+
+---
+
 ## 🚀 Features
 
 - ✅ Authentication system (Signup/Login)
