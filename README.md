@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# 🎓 EduTracker – Smart E-learning Activity Monitor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+EduTracker is a e-learning platform designed to intelligently monitor user activity such as lesson reading, video watching, and network status to ensure effective and engaging learning. It provides a smart way to track time spent on lessons, resume incomplete lessons, and mark them complete automatically when the expected time is reached.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+- ✅ Authentication system (Signup/Login)
+- 📘 Course listing with tracking icons
+- ⏳ Auto time-tracking per lesson
+- 💾 Backend progress save & resume
+- 👁️ Lesson "seen" tracking using visibility
+- 🌐 Low-network detection for UX optimization
+- 🔒 Token-based route protection
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
+## 🛠️ APIs and Web APIs Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1. **Background Tasks API (setInterval / clearInterval)**
+Used to **track and save user reading time** every 10 seconds, ensuring that progress is not lost if the page is closed or the user disconnects.
 
-### `npm test`
+### 2. **Intersection Observer API**
+Tracks whether the lesson content is **actually being viewed on the screen**, preventing false progress counts.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. **Network Information API**
+Used to detect **network quality** and optimize tracking behavior for users on slow connections.
 
-### `npm run build`
+### 4. **Custom Backend APIs** (`https://edutracker-server.onrender.com`)
+- `POST /api/auth/signup`: Register a new user.
+- `POST /api/auth/login`: Login and receive a token.
+- `GET /api/progress/:username`: Get progress list for all lessons.
+- `GET /api/progress/:username/:lessonId`: Get progress for a specific lesson.
+- `POST /api/progress`: Save or update user progress.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🧪 How This Project Works
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. User signs up or logs in. The backend returns a token.
+2. Token and username are passed as props instead of using `localStorage`.
+3. Courses are listed. Each course links to a `CourseDetail` page.
+4. On lesson view:
+   - Visibility is tracked using Intersection Observer API.
+   - Check the Network Strength (Good Network, Bad Network) with Network Information API
+   - Time is tracked using setInterval by using Background Task API.
+   - Every 10s, progress is saved to backend.
+   - Once enough time is spent, the lesson is marked complete.
+5. Navbar displays username and logout button.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 💻 How to Run Frontend Locally
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Step 1: Clone the repository
+git clone https://github.com/yourusername/edutracker.git
+cd edutracker
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Step 2: Install dependencies
+npm install
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Step 3: Start the development server
+npm start
